@@ -21,6 +21,8 @@ let current;
 let stack = [];
 
 
+
+
 function setup() {
     createCanvas(500, 500);
         //set cellCount
@@ -37,6 +39,7 @@ function setup() {
         }
     }
     current = grid[0];
+    let player = new Ball();
 }
 
 function draw() {
@@ -63,6 +66,10 @@ function draw() {
         current = stack.pop();
     }
     current.highlight();
+    if(stack.length === 0) {  
+        player.show();
+        player.update();
+    }
 }
 
 function index(i, j) {
