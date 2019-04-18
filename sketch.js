@@ -10,7 +10,7 @@
     // Make it the current cell
 
 new p5();
-let cols, rows;
+let cols, rows, player;
     //defines cellsize
 let w = 20;
 
@@ -28,6 +28,7 @@ function setup() {
         //set cellCount
     cols = Math.floor(width / w);
     rows = Math.floor(height / w);
+    player = new Ball();
     frameRate(30);
         //generate rows
     for (let j = 0; j < rows; j++) {
@@ -39,11 +40,12 @@ function setup() {
         }
     }
     current = grid[0];
-    let player = new Ball();
 }
 
 function draw() {
     background(51);
+    player.update();
+    player.show();
         //loop through all 
     for(let i = 0; i < grid.length; i++) {
         grid[i].show();
@@ -65,10 +67,8 @@ function draw() {
             //returns last element of stack as new current
         current = stack.pop();
     }
-    current.highlight();
-    if(stack.length === 0) {  
-        player.show();
-        player.update();
+    if (stack.length > 0) {
+        current.highlight();
     }
 }
 

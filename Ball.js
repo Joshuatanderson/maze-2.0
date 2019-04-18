@@ -4,13 +4,10 @@ function Ball() {
     this.size = w / 2;
     this.speed = 1;
     this.show = () => {
+        fill(240);
         circle(this.x, this.y, this.size);
     }
     this.update = () => {
-        if(keyCode){
-            console.log(this.x, this.y);
-            console.log(keyCode === UP_ARROW)
-        }
         if (keyCode === UP_ARROW && this.y - this.size / 2 > 0) {
             this.y -= this.speed;
         } else if (keyCode === DOWN_ARROW && this.y + this.size / 2 < height) {
